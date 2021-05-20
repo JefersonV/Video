@@ -1,7 +1,7 @@
 {
   "name": "PlatziVideo",
   "version": "1.0.0",
-  "description": "",
+  "description": "Platzi Video en React",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
