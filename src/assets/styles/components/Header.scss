@@ -1,6 +1,8 @@
+$bg-purple: #8f57fd;
+
 .header {
   align-items: center;
-  background: #8f57fd;
+  background: $bg-purple;
   color: white;
   display: flex;
   height: 100px;
