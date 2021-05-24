@@ -1,17 +1,19 @@
 import React from 'react';
+import playIcon from '../assets/images/play-icon.png';
+import plusIcon from '../assets/images/plus-icon.png';
 
-function CarouselItem() {
+function CarouselItem( { cover, title, year, contentRating,duration }) {
     return (
     <div className="carousel-item">
-			<img width="250px" src="https://images.pexels.com/photos/816608/pexels-photo-816608.jpeg?cs=srgb&dl=pexels-alex-andrews-816608.jpg&fm=jpg" alt="imagen carousel" />
+			<img src={cover} alt={title} />
 			<div className="carousel-item__details">
 				<div>
-					<img className="carousel-item__details--img" width="250px" src="https://images.pexels.com/photos/816608/pexels-photo-816608.jpeg?cs=srgb&dl=pexels-alex-andrews-816608.jpg&fm=jpg"alt="" />
-					<img className="carousel-item__details--img" width="250px" src="https://images.pexels.com/photos/816608/pexels-photo-816608.jpeg?cs=srgb&dl=pexels-alex-andrews-816608.jpg&fm=jpg"alt="" />
+					<img className="carousel-item__details--img" src={playIcon} alt="icon-play" />
+					<img className="carousel-item__details--img" src={plusIcon} alt="icon-plus" />
 						
 				</div>
-				<p className="carousel-item__details--title">Título descriptivo</p>
-				<p className="carousel-item__details--subtitle">2020 16+ 114 minutos</p>
+				<p className="carousel-item__details--title">{title}</p>
+				<p className="carousel-item__details--subtitle">{`${year} ${contentRating} ${duration}`}</p>
 			</div>
 		</div>
     )

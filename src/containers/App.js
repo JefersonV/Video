@@ -1,30 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Main from '../components/Main';
 import Carousel from '../components/Carousel';
 import Categories from '../components/Categories';
+import CarouselItem from '../components/CarouselItem';
 import Footer from '../components/Footer';
+import useInitialState from '../hooks/useInitialState';
 import '../assets/styles/App.scss';
 
-class App extends React.Component {
-    render() {
-			return (
-				<div className="app">
-					<Header />
-					<Main />
-					<Categories title="Mi Lista">
-						<Carousel />
-					</Categories>
-					<Categories title="Tendencias">
-						<Carousel />
-					</Categories>
-					<Categories title="Originales de Platzi Vídeo">
-						<Carousel />
-					</Categories>
-					<Footer />
-				</div>
-			)
-    }
+const url_api = 'https://my-json-server.typicode.com/JefersonV/JSON-server/initialState'
+const App = () => {
+	const initialState = useInitialState(url_api)
+	return(
+		<div className="app">
+			<Header />
+			<Main />
+			
+			{initialState.mylist.length > 0 && (
+				<Categories title="Mi Lista">
+					<Carousel>
+						<CarouselItem />
+					</Carousel>
+				</Categories>
+			)}
+			
+			<Categories title="Tendencias">
+				<Carousel>
+					{initialState.trends.map(item => 
+					<CarouselItem key={item.id} {...item} />
+					)}
+					
+				</Carousel>
+			</Categories>
+			<Categories title="Originales de Platzi Vídeo">
+				<Carousel>
+					{initialState.originals.map(item => 
+						<CarouselItem key={item.id} {...item}/>
+					
+					)}
+				</Carousel>
+			</Categories>
+			<Footer />
+		</div>
+	);
 }
 
 export default App;
