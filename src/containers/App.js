@@ -11,6 +11,8 @@ import '../assets/styles/App.scss';
 const url_api = 'https://my-json-server.typicode.com/JefersonV/JSON-server/initialState'
 const App = () => {
 	const initialState = useInitialState(url_api)
+	console.log('Data de la API:')
+	console.log(initialState)
 	return(
 		<div className="app">
 			<Header />
@@ -26,6 +28,7 @@ const App = () => {
 			
 			<Categories title="Tendencias">
 				<Carousel>
+					
 					{initialState.trends.map(item => 
 					<CarouselItem key={item.id} {...item} />
 					)}
