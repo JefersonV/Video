@@ -9,7 +9,7 @@ import useInitialState from '../hooks/useInitialState';
 import '../assets/styles/App.scss';
 
 const url_api = 'https://my-json-server.typicode.com/JefersonV/JSON-server/initialState'
-const App = () => {
+const Home = () => {
 	const initialState = useInitialState(url_api)
 	console.log('Data de la API:')
 	console.log(initialState)
@@ -48,4 +48,4 @@ const App = () => {
 	);
 }
 
-export default App;
+export default Home;
