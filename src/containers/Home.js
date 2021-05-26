@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../components/Header';
 import Main from '../components/Main';
 import Carousel from '../components/Carousel';
 import Categories from '../components/Categories';
 import CarouselItem from '../components/CarouselItem';
-import Footer from '../components/Footer';
+
 import useInitialState from '../hooks/useInitialState';
 import '../assets/styles/App.scss';
 
@@ -15,7 +14,7 @@ const Home = () => {
 	console.log(initialState)
 	return(
 		<div className="app">
-			<Header />
+			
 			<Main />
 			
 			{initialState.mylist.length > 0 && (
@@ -43,7 +42,7 @@ const Home = () => {
 					)}
 				</Carousel>
 			</Categories>
-			<Footer />
+	
 		</div>
 	);
 }
