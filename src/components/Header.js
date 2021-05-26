@@ -8,17 +8,19 @@ class Header extends React.Component {
 	render() {
 		return (
 		  <header className="header">
-			  <img className="header__img" src={logo} alt="Platzi Video" />
+				<Link to="/">
+			  	<img className="header__img" src={logo} alt="Platzi Video" />
+				</Link>
 
 				<div className="header__menu">
 
 					<div className="header__menu--profile">
-						<img src={userIcon} alt="" />
+							<img src={userIcon} alt="" />
 						<p>Perfil</p>
 					</div>
 
 					<ul>
-						<li><Link href={Login}>Cuenta</Link></li>
+						<li><Link to="/login">Cuenta</Link></li>
 						<li><a href="">Cerrar Sesión</a></li>
 					</ul>
 				</div>
