@@ -20,8 +20,8 @@ class Header extends React.Component {
 					</div>
 
 					<ul>
-						<li><Link to="/login">Cuenta</Link></li>
-						<li><a href="">Cerrar Sesión</a></li>
+						<li><a href="#">Cuenta</a></li>
+						<li><Link to="/login">Iniciar sesión</Link></li>
 					</ul>
 				</div>
 		  </header>
