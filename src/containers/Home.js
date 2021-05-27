@@ -1,50 +1,57 @@
-import React, { useState, useEffect } from 'react';
-import Main from '../components/Main';
-import Carousel from '../components/Carousel';
+import React from 'react';
+import { connect } from 'react-redux';
+import Search from '../components/Search';
 import Categories from '../components/Categories';
+import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
-
 import useInitialState from '../hooks/useInitialState';
 import '../assets/styles/App.scss';
 
-const url_api = 'https://my-json-server.typicode.com/JefersonV/JSON-server/initialState'
-const Home = () => {
-	const initialState = useInitialState(url_api)
-	console.log('Data de la API:')
-	console.log(initialState)
-	return(
-		<div className="app">
+const Home = ({ myList, trends, originals }) => {
+  return (
+    <>
+      <Search />
 			
-			<Main />
-			
-			{initialState.mylist.length > 0 && (
-				<Categories title="Mi Lista">
-					<Carousel>
-						<CarouselItem />
-					</Carousel>
-				</Categories>
-			)}
-			
-			<Categories title="Tendencias">
-				<Carousel>
-					
-					{initialState.trends.map(item => 
-					<CarouselItem key={item.id} {...item} />
-					)}
-					
-				</Carousel>
-			</Categories>
-			<Categories title="Originales de Platzi Vídeo">
-				<Carousel>
-					{initialState.originals.map(item => 
-						<CarouselItem key={item.id} {...item}/>
-					
-					)}
-				</Carousel>
-			</Categories>
-	
-		</div>
-	);
-}
+      <Categories title='Mi lista'>
+        <Carousel>
+          {myList?.map((item) => {
+            return (
+              <CarouselItem key={item.id} {...item} />
+            );
+          })}
+        </Carousel>
+      </Categories>
 
-export default Home;
+      <Categories title='Originals'>
+        <Carousel>
+          {originals?.map((item) => {
+            return (
+              <CarouselItem key={item.id} {...item} />
+            );
+          })}
+        </Carousel>
+      </Categories>
+
+      <Categories title='Trends'>
+        <Carousel>
+          {trends?.map((item) => {
+            return (
+              <CarouselItem key={item.id} {...item} />
+            );
+          })}
+        </Carousel>
+      </Categories>
+
+    </>
+  );
+};
+
+const mapStateToProps = (state) => {
+  return {
+    myList: state.myList,
+    trends: state.trends,
+    originals: state.originals,
+  };
+};
+
+export default connect(mapStateToProps, null)(Home);
