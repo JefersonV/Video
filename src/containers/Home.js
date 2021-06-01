@@ -11,16 +11,19 @@ const Home = ({ myList, trends, originals }) => {
   return (
     <>
       <Search />
-			
-      <Categories title='Mi lista'>
-        <Carousel>
-          {myList?.map((item) => {
-            return (
-              <CarouselItem key={item.id} {...item} />
-            );
-          })}
-        </Carousel>
-      </Categories>
+			{myList?.lenght > 0 && (
+
+				<Categories title='Mi lista'>
+					<Carousel>
+						{myList?.map((item) => {
+							return (
+								<CarouselItem key={item.id} {...item} />
+							);
+						})}
+					</Carousel>
+				</Categories>
+
+			)}
 
       <Categories title='Originals'>
         <Carousel>
