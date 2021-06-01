@@ -1,19 +1,31 @@
 import React from 'react';
+import '../assets/styles/components/Carousel.scss'
 // import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { setFavorite } from '../actions/index';
 import playIcon from '../assets/images/play-icon.png';
 import plusIcon from '../assets/images/plus-icon.png';
 
+//Data validation
+import PropTypes from 'prop-types';
+
+//Redux
+import { connect } from 'react-redux';
+import { setFavorite } from '../actions';
+
+
 const CarouselItem = (props) => {
-	const { cover, title, year, contentRating,duration } = props;
+	const { id, cover, title, year, duration, contentRating, isList } = props;
 	// Función que va a manejar el guardado hacia nuestros favoritos.
 	const handleSetFavorite = () => {
-		props.setFavorite(
-			{
-				cover, title, year, contentRating, duration
-			})
-	}
+		console.log('clickeado plus')
+		props.setFavorite({
+			id,
+			cover,
+			title,
+			year,
+			duration,
+			contentRating,
+		});
+	};
 
 	return (
     <div className="carousel-item">
@@ -24,7 +36,7 @@ const CarouselItem = (props) => {
 					<img 
 					className="carousel-item__details--img"
 					src={plusIcon}
-					alt="icon-plus" 
+					alt="plus icon" 
 					onClick={handleSetFavorite}
 					/>
 				
@@ -36,17 +48,17 @@ const CarouselItem = (props) => {
     )
 }
 
-/* CarouselItem.PropTypes = {
+CarouselItem.propTypes = {
 	cover: PropTypes.string,
 	title: PropTypes.string,
 	year: PropTypes.number,
 	contentRating: PropTypes.string,
 	duration: PropTypes.number,
-}
- */
+};
+
 
 const mapDispatchToProps = {
 	setFavorite,
 }
 
-export default connect(null, mapDispatchToProps)(CarouselItem)
+export default connect(null, mapDispatchToProps)(CarouselItem);

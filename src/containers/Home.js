@@ -4,49 +4,41 @@ import Search from '../components/Search';
 import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
-import useInitialState from '../hooks/useInitialState';
 import '../assets/styles/App.scss';
 
 const Home = ({ myList, trends, originals }) => {
-  return (
-    <>
-      <Search />
-			{myList?.lenght > 0 && (
+	// const initialState = useInitialState(API);
+	return (
+		<>
+			<Search isHome />
 
-				<Categories title='Mi lista'>
+			{myList.length > 0 && (
+				<Categories title='Mi Lista'>
 					<Carousel>
-						{myList?.map((item) => {
-							return (
-								<CarouselItem key={item.id} {...item} />
-							);
-						})}
+						{myList.map((item) => (
+							<CarouselItem key={item.id} {...item} isList />
+						))}
 					</Carousel>
 				</Categories>
-
 			)}
 
-      <Categories title='Originals'>
-        <Carousel>
-          {originals?.map((item) => {
-            return (
-              <CarouselItem key={item.id} {...item} />
-            );
-          })}
-        </Carousel>
-      </Categories>
+			<Categories title='Tendencias'>
+				<Carousel>
+					{trends.map((item) => (
+						<CarouselItem key={item.id} {...item} />
+					))}
+				</Carousel>
+			</Categories>
 
-      <Categories title='Trends'>
-        <Carousel>
-          {trends?.map((item) => {
-            return (
-              <CarouselItem key={item.id} {...item} />
-            );
-          })}
-        </Carousel>
-      </Categories>
-
-    </>
-  );
+			<Categories title='Originales de Platzi Video'>
+				<Carousel>
+					{originals.map((item) => (
+						<CarouselItem key={item.id} {...item} />
+					))}
+				</Carousel>
+			</Categories>
+		</>
+	);
 };
 
 const mapStateToProps = (state) => {

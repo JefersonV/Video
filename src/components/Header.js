@@ -1,5 +1,4 @@
 import React from 'react';
-import Login from '../containers/Login';
 import '../assets/styles/components/Header.scss';
 import logo from '../assets/images/logo-platzi-video-BW2.png';
 import userIcon from '../assets/images/user-icon.png';
