@@ -3,8 +3,15 @@ const reducer = (state, action) => {
 		case 'SET_FAVORITE':
 			return {
 				...state,
+				// lo que vamos a cambiar del state
 				myList: [...state.myList, action.payload],
 			};
+
+			case 'DELETE_FAVORITE':
+				return {
+					 ...state,
+					 myList: state.myList.filter(items => items.id ==! action.payload)
+				}
 
 		default:
 			return state;
