@@ -16,6 +16,9 @@ const CarouselItem = (props) => {
 	// Función que va a manejar el guardado hacia nuestros favoritos.
 	const handleSetFavorite = () => {
 		console.log('clickeado plus')
+		/* IMPORTANTE: */
+		// Gracias a connect y las importaciones de las actions.
+		// Podemos usar la función como un prop
 		props.setFavorite({
 			id,
 			cover,
@@ -74,6 +77,9 @@ CarouselItem.propTypes = {
 	duration: PropTypes.number,
 };
 
+/* IMPORTANTE */
+//Segundo parámetro: Envía al Reduce la acción que hemos encapsulado.
+//al ser llamada por el import en el componente se le atribuye su props.
 const mapDispatchToProps = {
 	setFavorite,
 	deleteFavorite,

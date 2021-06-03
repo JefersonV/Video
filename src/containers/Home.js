@@ -6,6 +6,7 @@ import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 import '../assets/styles/App.scss';
 
+// pasamos elementos del state como props -> gracias a la función -> mapStateToProps
 const Home = ({ myList, trends, originals, isList }) => {
 	// const initialState = useInitialState(API);
 	return (
@@ -44,6 +45,10 @@ const Home = ({ myList, trends, originals, isList }) => {
 		</>
 	);
 };
+
+/* IMPORTANTE: */
+//Envía el estado actual del storage al componente para que sea utilizado por medio de sus props.
+//Para lograrlo se requiere una función que indicará que atributos se quieren utilizar en el componente y luego las asigna a sus props.
 
 const mapStateToProps = (state) => {
   return {
