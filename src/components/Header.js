@@ -4,6 +4,7 @@ import logo from '../assets/images/logo-platzi-video-BW2.png';
 import userIcon from '../assets/images/user-icon.png';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { logoutRequest } from '../actions';
 import gravatar from '../utils/gravatar';
 
 function Header(props) {
@@ -12,7 +13,8 @@ function Header(props) {
 	const hasUser = Object.keys(user).length > 0;
 	
 		const handleLogout = () => {
-			
+			//Le enviamos vacío (a payload) para que modifique el state
+			props.logoutRequest({})
 		}
 
 		return (
@@ -25,7 +27,8 @@ function Header(props) {
 
 					<div className="header__menu--profile">
 						{hasUser ? 
-							<img src={gravatar(user.email)} alt={user.email} />:
+							<img src={gravatar(user.email)} alt={user.email} />
+							:
 							<img src={userIcon} alt="" />
 						}
 		
@@ -34,7 +37,7 @@ function Header(props) {
 
 					<ul>
 					{ hasUser ? 
-						<li><a href="#">{user.name}</a></li> :
+						<li><Link to="/">{user.name}</Link></li> :
 						null
 					}
 
@@ -60,4 +63,8 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps, null)(Header); 
+const mapDispatchToProps = {
+	logoutRequest,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header); 

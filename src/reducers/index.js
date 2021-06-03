@@ -21,7 +21,20 @@ const reducer = (state, action) => {
 					//le transmitimos el objeto que creamos en el action (login)
 					user: action.payload,
 				}	
+			
+			case 'LOGOUT_REQUEST':
+				return {
+					...state,
+					user: action.payload,
 
+				}
+
+			case 'REGISTER_REQUEST':
+				return {
+					...state,
+					user: action.payload,
+				}	
+			
 		default:
 			return state;
 	}
