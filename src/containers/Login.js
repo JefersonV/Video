@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { loginRequest } from '../actions';
+import Header from '../components/Header';
 import googleIcon from '../assets/images/google-icon.png';
 import twitterIcon from '../assets/images/twitter-icon.png';
 import { Link } from 'react-router-dom';
@@ -27,6 +28,9 @@ const Login = (props) =>  {
 	}
 
 	return ( 
+		<Fragment >
+
+		<Header isLogin/>
 		<section className='login'>
 			<section className='login__container'>
 				<h2>Inicia sesión</h2>
@@ -67,6 +71,7 @@ const Login = (props) =>  {
 				</p>
 			</section>
 		</section>
+		</Fragment>
 	)
 }
   //nos va a permitir enviar la información a nuestros actions

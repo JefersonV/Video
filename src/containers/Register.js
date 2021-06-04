@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../assets/styles/components/Register.scss';
 import { connect } from 'react-redux';
 import { registerRequest } from '../actions';
+import Header from '../components/Header';
 
 const Register = (props) => {
 
@@ -29,37 +30,40 @@ const Register = (props) => {
   }
 
   return (
-  <section className="register">
-    <section className="register__container">
-      <h2>Regístrate</h2>
-      <form  className="register__container--form" onSubmit={handleSubmit}>
-        <input 
-          name="Nombre"
-          type="text" 
-          className="input" 
-          placeholder="Nombre"
-          onChange={handleInput}
-        />
-        <input 
-          name="email"
-          type="text" 
-          className="input" 
-          placeholder="Correo"
-          onChange={handleInput}
-        />
-        <input 
-          name="Contraseña"
-          type="password" 
-          className="input" 
-          placeholder="Contraseña"
-          onChange={handleInput}
-        />
+    <Fragment >
+      <Header isRegister/>
+      <section className="register">
+        <section className="register__container">
+          <h2>Regístrate</h2>
+          <form  className="register__container--form" onSubmit={handleSubmit}>
+            <input 
+              name="Nombre"
+              type="text" 
+              className="input" 
+              placeholder="Nombre"
+              onChange={handleInput}
+            />
+            <input 
+              name="email"
+              type="text" 
+              className="input" 
+              placeholder="Correo"
+              onChange={handleInput}
+            />
+            <input 
+              name="Contraseña"
+              type="password" 
+              className="input" 
+              placeholder="Contraseña"
+              onChange={handleInput}
+            />
 
-        <button type="submit" className="button">Registrarme</button>
-      </form>
-      <Link to="/login">Iniciar sesión</Link>
-    </section>
-  </section>
+            <button type="submit" className="button">Registrarme</button>
+          </form>
+          <Link to="/login">Iniciar sesión</Link>
+        </section>
+      </section>
+    </Fragment>
   )
 };
 

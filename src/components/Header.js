@@ -2,13 +2,14 @@ import React from 'react';
 import '../assets/styles/components/Header.scss';
 import logo from '../assets/images/logo-platzi-video-BW2.png';
 import userIcon from '../assets/images/user-icon.png';
+import classNames from 'classnames'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logoutRequest } from '../actions';
 import gravatar from '../utils/gravatar';
 
 function Header(props) {
-	const { user } = props;
+	const { user, isLogin, isRegister } = props;
 	//Validación
 	const hasUser = Object.keys(user).length > 0;
 	
@@ -16,6 +17,11 @@ function Header(props) {
 			//Le enviamos vacío (a payload) para que modifique el state
 			props.logoutRequest({})
 		}
+
+		const headerClass = classNames('header', {
+			isLogin,
+			isRegister,
+		})
 
 		return (
 		  <header className="header">
