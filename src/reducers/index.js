@@ -1,7 +1,11 @@
 const reducer = (state, action) => {
 	switch (action.type) {
 		case 'SET_FAVORITE':
+			const exist = state.myList.find(item => item.id === action.payload.id)	
+			if(exist) return {...state}
+
 			return {
+				
 				//state: Es el estado que el Stage envía al Reduce. Por lo tanto, es el estado que se va a actualizar.
 				...state,
 				

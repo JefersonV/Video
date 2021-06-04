@@ -49,7 +49,7 @@ const Home = ({ myList, trends, originals, isList }) => {
 };
 
 /* IMPORTANTE: */
-//Envía el estado actual del storage al componente para que sea utilizado por medio de sus props.
+//Envía el estado actual del storage al componente (este componente) para que sea utilizado por medio de sus props.
 //Para lograrlo se requiere una función que indicará que atributos se quieren utilizar en el componente y luego las asigna a sus props.
 
 const mapStateToProps = (state) => {
