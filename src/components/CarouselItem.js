@@ -6,10 +6,11 @@ import plusIcon from '../assets/images/plus-icon.png';
 import removeIcon from '../assets/images/delete-icon.png';
 //Data validation
 import PropTypes from 'prop-types';
-
 //Redux
 import { connect } from 'react-redux';
 import { setFavorite, deleteFavorite } from '../actions';
+//Router
+import { Link } from 'react-router-dom';
 
 const CarouselItem = (props) => {
 	const { id, cover, title, year, duration, contentRating, isList } = props;
@@ -38,12 +39,15 @@ const CarouselItem = (props) => {
 			<img src={cover} alt={title} />
 			<div className="carousel-item__details">
 				<div>
-					<img 
-					className="carousel-item__details--img" 
-					src={playIcon} 
-					alt="icon-play" 
+					<Link to={`/player/${id}`}>
 
-					/>
+						<img 
+						className="carousel-item__details--img" 
+						src={playIcon} 
+						alt="icon-play" 
+						
+						/>
+					</Link>
 
 					{isList ?
 					<img 
