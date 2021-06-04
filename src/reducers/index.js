@@ -34,6 +34,15 @@ const reducer = (state, action) => {
 					...state,
 					user: action.payload,
 				}	
+
+			case 'GET_VIDEO_SOURCE':
+				return {
+					...state,
+					//el parámetro que pasamos por url llega como un string, por eso lo forzamos a que venga como un number
+					playing: state.trends.find(item => item.id === Number(action.payload)) 
+					|| state.originals.find(item => item.id === Number(action.payload)) 
+					|| []  
+				}
 			
 		default:
 			return state;
